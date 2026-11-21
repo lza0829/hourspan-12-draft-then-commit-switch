@@ -5,6 +5,7 @@ import Ingest from "./pages/Ingest.jsx";
 import Detect from "./pages/Detect.jsx";
 import History from "./pages/History.jsx";
 import Current from "./pages/Current.jsx";
+import Switch from "./pages/Switch.jsx";
 import Proofs from "./pages/Proofs.jsx";
 import Settings from "./pages/Settings.jsx";
 
@@ -13,6 +14,7 @@ const links = [
   ["/ingest", "入档"],
   ["/detect", "变更检测"],
   ["/history", "历史维"],
+  ["/switch", "草稿切换"],
   ["/current", "当前镜"],
   ["/proofs", "核证"],
   ["/settings", "站规"],
@@ -40,6 +42,7 @@ export default function App() {
           <Route path="/ingest" element={<Ingest />} />
           <Route path="/detect" element={<Detect />} />
           <Route path="/history" element={<History />} />
+          <Route path="/switch" element={<Switch />} />
           <Route path="/current" element={<Current />} />
           <Route path="/proofs" element={<Proofs />} />
           <Route path="/settings" element={<Settings />} />

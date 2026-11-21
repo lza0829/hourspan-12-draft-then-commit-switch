@@ -87,10 +87,65 @@ CREATE TABLE IF NOT EXISTS scd_proofs (
   created_at TEXT NOT NULL
 );
 
+-- 草稿切换：一次应用 = 一个切换跑次；拟关旧 / 拟开新先落草稿区。
+CREATE TABLE IF NOT EXISTS switch_runs (
+  id TEXT PRIMARY KEY,
+  detect_run_id TEXT NOT NULL,
+  architecture TEXT NOT NULL DEFAULT 'draft_retained_on_failure',
+  status TEXT NOT NULL DEFAULT 'draft',
+  draft_count INTEGER NOT NULL DEFAULT 0,
+  committed_count INTEGER NOT NULL DEFAULT 0,
+  failed_count INTEGER NOT NULL DEFAULT 0,
+  report_json TEXT NOT NULL DEFAULT '{}',
+  created_at TEXT NOT NULL,
+  committed_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS switch_drafts (
+  id TEXT PRIMARY KEY,
+  switch_run_id TEXT NOT NULL,
+  detect_run_id TEXT NOT NULL,
+  store_id TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'draft',
+  kind TEXT NOT NULL DEFAULT 'attr_change',
+  prev_hist_id TEXT,
+  prev_row_hash TEXT,
+  prev_valid_from TEXT,
+  proposed_valid_to TEXT,
+  new_open_time TEXT,
+  new_close_time TEXT,
+  new_weekday_mask TEXT NOT NULL,
+  new_biz_status TEXT NOT NULL,
+  new_valid_from TEXT NOT NULL,
+  new_valid_to TEXT,
+  new_row_hash TEXT NOT NULL,
+  source_snapshot_id TEXT NOT NULL,
+  collision_json TEXT NOT NULL DEFAULT '{}',
+  fail_reason TEXT,
+  opened_hist_id TEXT,
+  created_at TEXT NOT NULL,
+  committed_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS switch_events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  switch_run_id TEXT,
+  draft_id TEXT,
+  store_id TEXT,
+  event TEXT NOT NULL,
+  reason TEXT,
+  detail_json TEXT NOT NULL DEFAULT '{}',
+  created_at TEXT NOT NULL
+);
+
 CREATE INDEX IF NOT EXISTS idx_hist_store_current
   ON dim_store_hours_hist(store_id, is_current);
 CREATE INDEX IF NOT EXISTS idx_snap_store_ts
   ON source_snapshots(store_id, as_of_ts);
+CREATE INDEX IF NOT EXISTS idx_switch_draft_store_status
+  ON switch_drafts(store_id, status);
+CREATE INDEX IF NOT EXISTS idx_switch_draft_run
+  ON switch_drafts(switch_run_id);
 """
 
 

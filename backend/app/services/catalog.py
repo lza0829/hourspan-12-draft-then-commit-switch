@@ -14,6 +14,13 @@ def overview(conn):
         "检测跑次": conn.execute("SELECT COUNT(*) AS c FROM detect_runs").fetchone()["c"],
         "核证条": conn.execute("SELECT COUNT(*) AS c FROM scd_proofs").fetchone()["c"],
         "搁置": conn.execute("SELECT COUNT(*) AS c FROM quarantine").fetchone()["c"],
+        "切换跑次": conn.execute("SELECT COUNT(*) AS c FROM switch_runs").fetchone()["c"],
+        "未提交草稿": conn.execute(
+            "SELECT COUNT(*) AS c FROM switch_drafts WHERE status IN ('draft','validated')"
+        ).fetchone()["c"],
+        "失败草稿": conn.execute(
+            "SELECT COUNT(*) AS c FROM switch_drafts WHERE status='failed'"
+        ).fetchone()["c"],
     }
 
 

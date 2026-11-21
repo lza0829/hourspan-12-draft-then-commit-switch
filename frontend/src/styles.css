@@ -214,3 +214,25 @@ tr:hover td { background: rgba(232, 213, 181, 0.04); }
   font-weight: 650;
   letter-spacing: 0.02em;
 }
+
+a.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text);
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.panel h3 {
+  margin: 0.2rem 0 0.6rem;
+  font-size: 0.92rem;
+  color: var(--sand-dim);
+  font-weight: 600;
+}
+.switch-note {
+  border-left: 3px solid rgba(217, 123, 92, 0.7);
+  padding: 0.5rem 0.7rem;
+  margin-bottom: 0.8rem;
+  background: rgba(217, 123, 92, 0.08);
+  border-radius: 6px;
+  color: var(--sand-dim);
+  font-size: 0.85rem;
+}

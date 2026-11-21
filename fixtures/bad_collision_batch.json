@@ -1,0 +1,24 @@
+{
+  "snapshots": [
+    {
+      "id": "SNAP-BAD-EAST-02",
+      "store_id": "ST-EAST-02",
+      "as_of_ts": "2026-11-20T00:00:00Z",
+      "open_time": "10:30",
+      "close_time": "22:30",
+      "weekday_mask": "1111110",
+      "biz_status": "open",
+      "payload": {"reason": "本店草稿可过对撞，但同批另一店故意失败，整票不得提交"}
+    },
+    {
+      "id": "SNAP-BAD-WEST-01",
+      "store_id": "ST-WEST-01",
+      "as_of_ts": "2026-11-20T00:00:00Z",
+      "open_time": "20:00",
+      "close_time": "08:00",
+      "weekday_mask": "1111100",
+      "biz_status": "open",
+      "payload": {"reason": "故意对撞：开晚于闭，字段对撞必失败"}
+    }
+  ]
+}

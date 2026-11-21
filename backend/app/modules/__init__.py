@@ -1,4 +1,7 @@
-"""邻题空桩：同仓换主链路时实现其一，勿同构换皮。"""
+"""邻题空桩：同仓换主链路时实现其一，勿同构换皮。
+
+draft_then_commit_switch 已落地（甲·失败草稿留痕），故不在空桩清单内。
+"""
 STUBS = [
     "same_day_multi_change",
     "late_snapshot_apply",
@@ -11,7 +14,6 @@ STUBS = [
     "open_close_order_fence",
     "hist_row_hash_proof",
     "detect_coverage_member_proof",
-    "draft_then_commit_switch",
     "concurrent_version_hold",
     "snapshot_field_allowlist",
     "region_cut_audit",

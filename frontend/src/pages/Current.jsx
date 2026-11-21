@@ -14,7 +14,10 @@ export default function Current() {
       <div className="topbar">
         <div>
           <h1>当前镜</h1>
-          <p>dim_store_hours_current：每店一行，指向 is_current 历史行。</p>
+          <p>
+            dim_store_hours_current：每店一行，指向 is_current 历史行。
+            镜只由草稿切换的原子提交改写；镜与历史行不一致即视为切换未完成。
+          </p>
         </div>
       </div>
       {err && <p className="error">{err}</p>}

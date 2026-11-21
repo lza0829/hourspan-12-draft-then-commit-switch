@@ -29,7 +29,10 @@ export default function Detect() {
       <div className="topbar">
         <div>
           <h1>变更检测</h1>
-          <p>对照当前镜与快照 row_hash，产出变更清单（new / attr_change）。</p>
+          <p>
+            对照当前镜与快照 row_hash，产出变更清单（new / attr_change）。
+            检测只出清单；真正改正式必须走草稿切换。
+          </p>
         </div>
       </div>
       <div className="panel">
